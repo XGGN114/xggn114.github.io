@@ -1,0 +1,71 @@
+/* 全局字体 - 使用更圆润、可爱的字体 */
+body {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Noto Sans SC', cursive, sans-serif;
+}
+
+/* 全局背景 - 这里会应用你后续设置的背景图片 */
+#web_bg {
+    background-attachment: fixed; /* 背景固定，不随滚动 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 卡片风格 - 让所有卡片更圆润、带毛玻璃效果 */
+:root {
+    --card-bg: rgba(255, 255, 255, 0.7); /* 卡片背景半透明白 */
+    --card-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15); /* 更柔和的阴影 */
+    --border-radius: 20px; /* 全局圆角 */
+}
+
+/* 导航栏毛玻璃效果 */
+#nav {
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 导航菜单项样式 - 圆润、悬浮效果 */
+#nav .menus_items .menus_item {
+    padding: 0.2rem 0.8rem !important;
+    margin: 3px 5px;
+    border-radius: 30px !important; /* 更圆润的菜单项 */
+    transition: all 0.3s ease;
+}
+
+#nav .menus_items .menus_item a {
+    border-radius: 30px !important;
+    padding: 0.4rem 0.8rem !important;
+}
+
+#nav .menus_items .menus_item:hover {
+    background: rgba(255, 182, 193, 0.5) !important; /* 浅粉色悬浮背景 */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+}
+
+/* 页脚样式 */
+#footer {
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 30px 30px 0 0;
+    margin-top: 20px;
+}
+
+/* 修改左上角站点标题，实现 “XGGN の BLOG” 多彩效果 */
+#site-name {
+    color: #ffffff !important; /* 将整体文字设为白色 */
+}
+/* 使用伪元素单独选中 “の” 并改为蓝色 */
+#site-name:before {
+    content: "XGGN ";
+    color: #ffffff; /* 白色 */
+}
+#site-name:after {
+    content: " BLOG";
+    color: #ffffff; /* 白色 */
+}
+/* 直接修改包含 “の” 的文本节点无法单独改色，需要通过JS或额外标签实现 */
+/* 更可靠的方法：使用JS在页面加载后修改 */
