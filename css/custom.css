@@ -1,36 +1,116 @@
-/* 全局字体 - 使用更圆润、可爱的字体 */
+/* ===== 全局字体 ===== */
 body {
-    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Noto Sans SC', cursive, sans-serif;
+    font-family: 'Times New Roman', '宋体', 'Noto Sans SC', cursive, sans-serif;
 }
 
-/* 全局背景 - 这里会应用你后续设置的背景图片 */
+/* ===== 全局背景 ===== */
 #web_bg {
-    background-attachment: fixed; /* 背景固定，不随滚动 */
+    background-attachment: fixed;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-/* 卡片风格 - 让所有卡片更圆润、带毛玻璃效果 */
+/* ===== 卡片基础变量 ===== */
 :root {
-    --card-bg: rgba(255, 255, 255, 0.7); /* 卡片背景半透明白 */
-    --card-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15); /* 更柔和的阴影 */
-    --border-radius: 20px; /* 全局圆角 */
+    --card-bg: rgba(0, 0, 0, 0.6);
+    --card-box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    --border-radius: 20px;
 }
 
-/* 导航栏毛玻璃效果 */
+#aside_content .card-info .card-info-data .card-info-data-item .num,
+#aside_content .card-info .card-info-data .card-info-data-item .num span,
+#aside_content .card-info .card-info-data .card-info-data-item .num * {
+    color: #ffffff !important;
+}
+
+/* ========================================
+   🎯 导航栏：蓝紫渐变背景 + 毛玻璃
+   ======================================== */
 #nav {
-    background: rgba(255, 255, 255, 0.65) !important;
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    background: linear-gradient(135deg, rgba(74, 0, 224, 0.7), rgba(142, 45, 226, 0.7)) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 12px !important;
+    border: none !important;
+    padding: 10px 20px !important;
 }
 
-/* 导航菜单项样式 - 圆润、悬浮效果 */
+/* ========================================
+   📄 文章卡片：纯黑色毛玻璃（无渐变边框）
+   ======================================== */
+.post-block,
+.recent-post-item {
+    position: relative;
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 12px !important;
+    border: none !important;
+    padding: 20px !important;
+    background-image: none !important;
+}
+
+/* ========================================
+   👤 侧边栏整体：黑色毛玻璃（整个右侧区域）
+   ======================================== */
+#aside_content {
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 12px !important;
+    padding: 10px !important;
+}
+
+/* ========================================
+   侧边栏卡片：黑色毛玻璃 + 蓝紫渐变边框（流动）
+   ======================================== */
+.aside .card-widget {
+    position: relative;
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 12px !important;
+    border: none !important;
+    padding: 20px !important;
+}
+
+/* 侧边栏卡片的渐变边框（只对侧边栏生效） */
+.aside .card-widget::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 14px;
+    background: linear-gradient(45deg, #4a00e0, #8e2de2, #4a00e0) !important;
+    background-size: 300% 300% !important;
+    animation: borderGlow 4s ease-in-out infinite !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+}
+
+/* 移除导航栏和文章卡片的伪元素边框 */
+.post-block::before,
+.recent-post-item::before,
+#nav::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* ===== 边框流动动画 ===== */
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ========================================
+   导航菜单项样式
+   ======================================== */
 #nav .menus_items .menus_item {
     padding: 0.2rem 0.8rem !important;
     margin: 3px 5px;
-    border-radius: 30px !important; /* 更圆润的菜单项 */
+    border-radius: 30px !important;
     transition: all 0.3s ease;
 }
 
@@ -40,32 +120,164 @@ body {
 }
 
 #nav .menus_items .menus_item:hover {
-    background: rgba(255, 182, 193, 0.5) !important; /* 浅粉色悬浮背景 */
+    background: rgba(255, 255, 255, 0.2) !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 4px 15px rgba(142, 45, 226, 0.5);
 }
 
-/* 页脚样式 */
+/* ========================================
+   页脚样式
+   ======================================== */
 #footer {
-    background: rgba(255, 255, 255, 0.6) !important;
+    background: rgba(0, 0, 0, 0.5) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 30px 30px 0 0;
     margin-top: 20px;
 }
 
-/* 修改左上角站点标题，实现 “XGGN の BLOG” 多彩效果 */
-#site-name {
-    color: #ffffff !important; /* 将整体文字设为白色 */
+/* ========================================
+   🔤 全局文字颜色改为白色（保护代码块）
+   ======================================== */
+
+/* 1. 主体背景文字 */
+body,
+#article-container,
+#article-container p,
+#article-container h1,
+#article-container h2,
+#article-container h3,
+#article-container h4,
+#article-container h5,
+#article-container h6,
+#article-container li,
+#article-container .post-meta,
+.post-block,
+.recent-post-item,
+.aside .card-widget,
+#aside_content,
+#footer,
+#nav,
+#nav a,
+#site-name,
+#pagination .page-number,
+#pagination .extend {
+    color: #ffffff !important;
 }
-/* 使用伪元素单独选中 “の” 并改为蓝色 */
-#site-name:before {
-    content: "XGGN ";
-    color: #ffffff; /* 白色 */
+
+/* 2. 链接颜色（浅紫色，便于辨识） */
+a,
+#article-container a,
+#nav a,
+#footer a,
+#aside_content a {
+    color: #a78bfa !important;
 }
-#site-name:after {
-    content: " BLOG";
-    color: #ffffff; /* 白色 */
+a:hover,
+#article-container a:hover,
+#nav a:hover,
+#footer a:hover,
+#aside_content a:hover {
+    color: #c4b5fd !important;
 }
-/* 直接修改包含 “の” 的文本节点无法单独改色，需要通过JS或额外标签实现 */
-/* 更可靠的方法：使用JS在页面加载后修改 */
+
+/* 3. 保护代码块内部的颜色（不被覆盖） */
+#article-container .highlight *,
+#article-container pre *,
+#article-container .code *,
+#article-container .gutter * {
+    color: inherit !important; /* 还原为高亮主题的颜色 */
+}
+/* 特别处理终端风格（如果你启用了命令行样式，则保留绿色） */
+#article-container .highlight .line,
+#article-container .highlight .gutter .line {
+    color: #00ff41 !important; /* 终端绿，可根据需要调整 */
+}
+
+/* ========================================
+   📦 文章内代码块：命令行风格（可选）
+   ======================================== */
+#article-container pre,
+#article-container .highlight {
+    background: #0d0d0d !important;
+    border-radius: 10px !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+#article-container .highlight-tools {
+    background: #1a1a1a !important;
+    padding: 8px 16px !important;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+#article-container .highlight-tools::before {
+    content: "● ● ●";
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: #ff5f57;
+    text-shadow: 12px 0 #ffbd2e, 24px 0 #28c840;
+    margin-right: 12px;
+}
+
+#article-container .highlight-tools .code-lang {
+    color: #888 !important;
+    font-size: 12px !important;
+    margin-left: auto;
+    font-family: 'Consolas', monospace;
+}
+
+#article-container .highlight .code,
+#article-container .highlight table,
+#article-container .highlight pre,
+#article-container .highlight .gutter {
+    background: #0d0d0d !important;
+}
+
+#article-container .highlight code,
+#article-container .highlight .line,
+#article-container .highlight .gutter .line {
+    font-family: 'Consolas', 'Courier New', monospace !important;
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+    color: #00ff41 !important; /* 终端绿，若想保留高亮，可移除这行 */
+}
+
+#article-container .highlight .gutter .line {
+    color: #444 !important;
+    padding-right: 20px !important;
+    user-select: none;
+}
+
+#article-container .highlight .code pre {
+    padding: 16px 20px !important;
+}
+
+#article-container .highlight .copy-btn {
+    color: #666 !important;
+    transition: color 0.3s;
+    background: transparent !important;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#article-container .highlight .copy-btn:hover {
+    color: #00ff41 !important;
+}
+
+#article-container .highlight::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+#article-container .highlight::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 3px;
+}
+#article-container .highlight::-webkit-scrollbar-thumb {
+    background: #00ff41;
+    border-radius: 3px;
+}
